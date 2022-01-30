@@ -59,7 +59,7 @@ p {
     border-radius: 5px;
     box-shadow: 0px 15px 30px rgb(0 0 0 / 15%);
     margin-top: 50px;
-    min-width: 300px;
+    min-width: 1000px;
     min-height: 500px;
     max-height: calc(100vh - 65px);
     overflow: hidden;
@@ -90,5 +90,28 @@ p {
 
 #city-data {
     font-size: 12px;
+}
+
+#week {
+    width: 100%;
+    height: calc(100% - 44px);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.days {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.min-max-temps {
+    display: flex;
+}
+
+.min-max {
+    margin: 3px;
 }
 
