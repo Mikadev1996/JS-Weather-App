@@ -40,6 +40,35 @@ p {
     margin: 5px;
     padding: 5px;
 }
+.form-control {
+    position: relative;
+}
+
+.form-control input {
+    border: 2px solid whitesmoke;
+    border-radius: 4px;
+    display: block;
+    font-family: inherit;
+    width: 93%;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.form-control.error input {
+    border-color: darkred;
+}
+
+.form-control.error i.fa-exclamation-circle {
+    color: darkred;
+    visibility: visible;
+}
+
+.form-control i {
+    visibility: hidden;
+    position: absolute;
+    top: 18px;
+    right: 10px;
+}
 
 #content {
     display: flex;
@@ -111,7 +140,12 @@ p {
     display: flex;
 }
 
-.min-max {
+.max {
     margin: 3px;
+}
+
+.min {
+    margin: 3px;
+    color: lightslategrey;
 }
 

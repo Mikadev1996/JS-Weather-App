@@ -1,11 +1,19 @@
-const searchInput = document.getElementById("search").value;
+const searchInput = document.getElementById("search");
 
 window.addEventListener("keydown", (e) => {
     if (e.key !== "" && e.key === "Enter") {
-        console.log(e.key);
-        getWeather(searchInput.value).then(r => displayWeather(r)).catch(err => {console.log("Error: ", err)});
+        console.log(e.key, searchInput.value);
+        getWeather(searchInput.value).then(r => displayWeather(r)).catch(err => handleError(err));
+        getForecast(searchInput.value).then(r => displayForecast(r)).catch(err => handleError(err));
     }
 });
+
+function handleError(err) {
+    console.log(err);
+    const search = document.getElementById('search');
+    const searchParent = search.parentElement;
+    searchParent.className = "form-control error top-bar-content"
+}
 
 async function getWeather(search) {
     const response =  await fetch(`https://api.weatherapi.com/v1/current.json?key=5a33c28134404542864203800222901&q=${search}&aqi=yes`, {mode: "cors"});
@@ -19,6 +27,9 @@ async function getForecast(search) {
 }
 
 function displayWeather(data) {
+    const search = document.getElementById('search');
+    const searchParent = search.parentElement;
+    searchParent.className = "form-control top-bar-content"
     const city = document.getElementById("city");
     city.textContent = data.location.name;
 
@@ -32,8 +43,17 @@ function displayForecast(data) {
     console.log(weekForecast);
     for (let i = 0; i < weekForecast.length; i++) {
         let day = weekForecast[i];
-        console.log(day.date, day.maxtemp_c, day.mintemp_c);
+        let date = new Date(day.date).getDay();
+        const arrayOfWeekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        let weekdayName = arrayOfWeekdays[date];
 
+        let weatherDayDisplay = document.getElementById(`day-${i}`);
+        weatherDayDisplay.textContent = weekdayName;
+
+        let maxTempDisplay = document.getElementById(`max-day-${i}`);
+        let minTempDisplay = document.getElementById(`min-day-${i}`);
+        maxTempDisplay.textContent = day.day.maxtemp_c + "°C";
+        minTempDisplay.textContent = day.day.mintemp_c + "°C";
     }
 }
 
