@@ -2,21 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Weather App</title>
     <script src="https://kit.fontawesome.com/975166037c.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="app">
-        <nav>
-            <h1>Hello, world!</h1>
-            <div class="form-control">
-                <label for="search">Search:</label>
+        <nav id="top-bar">
+            <i class="fas fa-cloud-sun-rain"></i>
+            <div class="top-bar-content">
+                <h1>Weather App</h1>
+            </div>
+            <div class="form-control top-bar-content">
+                <label for="search"></label>
                 <i class="fas fa-search"></i>
-                <input type="text" id="search" placeholder="London"/>
+                <input type="text" id="search" placeholder="Enter a city"/>
             </div>
         </nav>
         <main>
-
+            <div id="content">
+                <div id="weather-display">
+                    <div id="header">
+                        <div class="header-content"><h1 id="city"></h1></div>
+                        <div class="header-content"><p id="city-data"></p></div>
+                    </div>
+                    <div id="week"></div>
+                </div>
+            </div>
         </main>
     </div>
 <script src="main.js"></script>
