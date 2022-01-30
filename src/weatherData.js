@@ -16,7 +16,9 @@ async function getWeather(search) {
 function displayData(data) {
     const city = document.getElementById("city");
     city.textContent = data.location.name;
-    console.log(data);
+
+    const cityData = document.getElementById("city-data");
+    cityData.textContent = `${data.current.temp_c}°C Feels like ${data.current.feelslike_c}°C`;
 
 }
 
