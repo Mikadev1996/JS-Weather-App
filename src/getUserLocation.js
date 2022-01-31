@@ -11,7 +11,13 @@ function getUserLocation() {
             .then(r => r.json())
             .then(r => {
                 const city = r.results[0].components.city;
-                getWeather(city).then(r => displayWeather(r)).catch(err => console.log("getWeather Error: ", err));
+                getWeather(city)
+                    .then(r => displayWeather(r))
+                    .then(r => {
+                        const content = document.getElementById("content");
+                        content.style.opacity = "1";})
+                    .catch(err => console.log("getWeather Error: ", err));
+
                 getForecast(city).then(r => displayForecast(r)).catch(err => console.log("getForecast Error: ", err));
             })
     }

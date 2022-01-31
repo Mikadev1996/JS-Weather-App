@@ -54,6 +54,14 @@ function displayForecast(data) {
         let minTempDisplay = document.getElementById(`min-day-${i}`);
         maxTempDisplay.textContent = day.day.maxtemp_c + "°C";
         minTempDisplay.textContent = day.day.mintemp_c + "°C";
+
+        let iconDisplay = document.getElementById(`weather-icon-${i}`);
+        iconDisplay.src = day.day.condition.icon;
+
+        let humidityDisplay = document.getElementById(`humidity-${i}`);
+        let windDisplay = document.getElementById(`wind-${i}`);
+        humidityDisplay.textContent = `Humidity: ${day.day.avghumidity}%`;
+        windDisplay.textContent = `Max Wind: ${day.day.maxwind_mph} mph`;
     }
 }
 
